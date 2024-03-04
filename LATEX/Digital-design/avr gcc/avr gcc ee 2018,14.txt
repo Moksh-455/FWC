@@ -1,0 +1,40 @@
+#include <avr/io.h>
+#include <util/delay.h>
+
+// Define macros for the LED pin and input pins for variables a, b, c, and d
+#define LED_PIN PB5
+#define A_PIN PB0
+#define B_PIN PB1
+#define C_PIN PB2
+#define D_PIN PB3
+
+int main(void) {
+    // Set LED pin as output
+    DDRB |= (1 << LED_PIN);
+
+    // Set input pins for variables as input
+    DDRB &= ~((1 << A_PIN) | (1 << B_PIN) | (1 << C_PIN) | (1 << D_PIN));
+
+    while (1) {
+        // Read the values of variables a, b, c, and d
+        int a = (PINB & (1 << A_PIN)) >> A_PIN;
+        int b = (PINB & (1 << B_PIN)) >> B_PIN;
+        int c = (PINB & (1 << C_PIN)) >> C_PIN;
+        int d = (PINB & (1 << D_PIN)) >> D_PIN;
+
+        // Calculate the result of the equation ab + cd
+        int result = (a && b) || (c && d);
+
+        // Turn on or off the LED based on the result
+        if (result) {
+            PORTB |= (1 << LED_PIN); // Turn on the LED
+        } else {
+            PORTB &= ~(1 << LED_PIN); // Turn off the LED
+        }
+
+        // Delay for a short period of time
+        _delay_ms(100);
+    }
+
+    return 0;
+}
