@@ -1,0 +1,20 @@
+#include<Arduino.h>
+   int A,B,C,Z,H;
+   void setup()
+   {
+          pinMode(2,OUTPUT);
+           pinMode(3,OUTPUT);
+           pinMode(4,INPUT);
+           pinMode(5,INPUT);
+           pinMode(6,INPUT);
+  }
+  void loop()
+  {
+          A=digitalRead(4);
+          B=digitalRead(5);
+         C=digitalRead(6);
+         Z=(!A&&!B&&!C)||(!A&&!B&&C)||(!A&&B&&!C)||(    !A&&B&&C)||(A&&!B&&C)||(A&&B&&C);
+         H=(!A||C);
+          digitalWrite(2,Z);
+          digitalWrite(13,H);
+ 
