@@ -17,4 +17,4 @@
          H=(!A||C);
           digitalWrite(2,Z);
           digitalWrite(3,H);
- 
+ }
