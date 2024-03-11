@@ -2,7 +2,7 @@
    int A,B,C,Z,H;
    void setup()
    {
-          pinMode(2,OUTPUT);
+           pinMode(2,OUTPUT);
            pinMode(3,OUTPUT);
            pinMode(4,INPUT);
            pinMode(5,INPUT);
