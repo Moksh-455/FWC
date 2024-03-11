@@ -16,5 +16,5 @@
          Z=(!A&&!B&&!C)||(!A&&!B&&C)||(!A&&B&&!C)||(    !A&&B&&C)||(A&&!B&&C)||(A&&B&&C);
          H=(!A||C);
           digitalWrite(2,Z);
-          digitalWrite(13,H);
+          digitalWrite(3,H);
  
