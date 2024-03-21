@@ -1,0 +1,46 @@
+#include <WiFi.h>
+#include <WiFiUdp.h>
+#include <ArduinoOTA.h>
+
+#ifndef STASSID
+#define STASSID "0000" // Add your network credentials
+#define STAPSK  "12345678"
+#endif
+#define LED_PIN 5
+const char* ssid = STASSID;
+const char* password = STAPSK;
+
+ int A,B,C,D,Z;
+
+void OTAsetup() {
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(ssid, password);
+  while (WiFi.waitForConnectResult() != WL_CONNECTED) {
+    delay(5000);
+    ESP.restart();
+  }
+  ArduinoOTA.begin();
+}
+
+void OTAloop() {
+  ArduinoOTA.handle();
+}
+
+void setup() {
+  OTAsetup();
+           pinMode(13,OUTPUT);
+           pinMode(14,INPUT);
+           pinMode(15,INPUT);
+           pinMode(16,INPUT);
+           pinMode(17,INPUT);
+ }
+
+void loop() {
+  OTAloop();
+          A=digitalRead(3);
+          B=digitalRead(4);
+         C=digitalRead(5);
+         D=digitalRead(6);
+         Z=(!A&&B&&!C&&AA&&!B&&C&&!A)(D);
+          digitalWrite(13,Z);
+}
