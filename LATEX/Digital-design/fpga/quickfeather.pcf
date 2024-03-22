@@ -1,0 +1,4 @@
+set_io A		36
+set_io B		37
+set_io C		39
+set_io y                30
